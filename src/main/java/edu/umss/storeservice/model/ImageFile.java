@@ -5,6 +5,30 @@ import edu.umss.storeservice.dto.ImageFileDto;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "image_file")
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(
+                name = "GetAllImageFile",
+                procedureName = "GetAllImageFile",
+                resultClasses = ImageFile.class
+        ),
+        @NamedStoredProcedureQuery(
+                name = "DeleteImageFileById",
+                procedureName = "DeleteImageFileById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class),
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "result", type = Boolean.class)
+                }
+        ),
+        @NamedStoredProcedureQuery(
+                name = "GetImageFileById",
+                procedureName = "GetImageFileById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class)
+                },
+                resultClasses = ImageFile.class
+        )
+})
 public class ImageFile extends ModelBase<ImageFileDto>{
     private String fileImageName;
     private String formatImage;

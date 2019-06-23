@@ -2,11 +2,33 @@ package edu.umss.storeservice.model;
 
 import edu.umss.storeservice.dto.BillDto;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "bill")
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(
+                name = "GetAllBill",
+                procedureName = "GetAllBill",
+                resultClasses = Bill.class
+        ),
+        @NamedStoredProcedureQuery(
+                name = "DeleteBillById",
+                procedureName = "DeleteBillById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class),
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "result", type = Boolean.class)
+                }
+        ),
+        @NamedStoredProcedureQuery(
+                name = "GetBillById",
+                procedureName = "GetBillById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class)
+                },
+                resultClasses = Bill.class
+        )
+})
 public class Bill extends ModelBase<BillDto>{
 
     private String billCode;

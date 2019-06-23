@@ -2,11 +2,33 @@ package edu.umss.storeservice.model;
 
 import edu.umss.storeservice.dto.ClientDto;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "client")
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(
+                name = "GetAllClient",
+                procedureName = "GetAllClient",
+                resultClasses = Client.class
+        ),
+        @NamedStoredProcedureQuery(
+                name = "DeleteClientById",
+                procedureName = "DeleteClientById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class),
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "result", type = Boolean.class)
+                }
+        ),
+        @NamedStoredProcedureQuery(
+                name = "GetClientById",
+                procedureName = "GetClientById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class)
+                },
+                resultClasses = Client.class
+        )
+})
 public class Client extends ModelBase<ClientDto>{
     private String firstName;
     private String lastName;

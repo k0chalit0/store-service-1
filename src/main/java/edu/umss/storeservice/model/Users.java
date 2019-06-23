@@ -2,11 +2,33 @@ package edu.umss.storeservice.model;
 
 import edu.umss.storeservice.dto.UsersDto;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(
+                name = "GetAllUsers",
+                procedureName = "GetAllUsers",
+                resultClasses = Users.class
+        ),
+        @NamedStoredProcedureQuery(
+                name = "DeleteUsersById",
+                procedureName = "DeleteUsersById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class),
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "result", type = Boolean.class)
+                }
+        ),
+        @NamedStoredProcedureQuery(
+                name = "GetUsersById",
+                procedureName = "GetUsersById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class)
+                },
+                resultClasses = Users.class
+        )
+})
 public class Users extends ModelBase<UsersDto>{
     private String accountUser;
     private byte[] passwordUser;

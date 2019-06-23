@@ -6,6 +6,30 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "provider")
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(
+                name = "GetAllProvider",
+                procedureName = "GetAllProvider",
+                resultClasses = Provider.class
+        ),
+        @NamedStoredProcedureQuery(
+                name = "DeleteProviderById",
+                procedureName = "DeleteProviderById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class),
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "result", type = Boolean.class)
+                }
+        ),
+        @NamedStoredProcedureQuery(
+                name = "GetProviderById",
+                procedureName = "GetProviderById",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class)
+                },
+                resultClasses = Provider.class
+        )
+})
 public class Provider extends ModelBase<ProviderDto>{
     private String firstName;
     private String lastName;
