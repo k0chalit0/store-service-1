@@ -5,7 +5,6 @@ import edu.umss.storeservice.dto.ClientDto;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 public class Client extends ModelBase<ClientDto>{

@@ -5,7 +5,6 @@ import edu.umss.storeservice.dto.BillDto;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 public class Bill extends ModelBase<BillDto>{

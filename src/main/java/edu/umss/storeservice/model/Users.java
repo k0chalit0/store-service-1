@@ -5,8 +5,6 @@ import edu.umss.storeservice.dto.UsersDto;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.Arrays;
 
 @Entity
 public class Users extends ModelBase<UsersDto>{

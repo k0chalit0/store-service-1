@@ -5,7 +5,6 @@ import edu.umss.storeservice.dto.ImageFileDto;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "IMAGE_FILE", schema = "dbo", catalog = "SYSTEMSALES")
 public class ImageFile extends ModelBase<ImageFileDto>{
     private String fileImageName;
     private String formatImage;
@@ -13,7 +12,6 @@ public class ImageFile extends ModelBase<ImageFileDto>{
     private Boolean isDeleted;
 
     @Basic
-    @Column(name = "File_Image_Name")
     public String getFileImageName() {
         return fileImageName;
     }
@@ -23,7 +21,6 @@ public class ImageFile extends ModelBase<ImageFileDto>{
     }
 
     @Basic
-    @Column(name = "Format_Image")
     public String getFormatImage() {
         return formatImage;
     }
@@ -33,7 +30,6 @@ public class ImageFile extends ModelBase<ImageFileDto>{
     }
 
     @Basic
-    @Column(name = "URL_Image")
     public String getUrlImage() {
         return urlImage;
     }
@@ -43,7 +39,6 @@ public class ImageFile extends ModelBase<ImageFileDto>{
     }
 
     @Basic
-    @Column(name = "Is_deleted")
     public Boolean getDeleted() {
         return isDeleted;
     }
