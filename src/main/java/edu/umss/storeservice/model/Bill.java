@@ -27,7 +27,15 @@ import javax.persistence.*;
                         @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class)
                 },
                 resultClasses = Bill.class
-        )
+        )/*,
+        @NamedStoredProcedureQuery(
+                name = "SaveBill",
+                procedureName = "SaveBill",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "model", type = Bill.class)
+                },
+                resultClasses = Bill.class
+        )*/
 })
 public class Bill extends ModelBase<BillDto>{
 
