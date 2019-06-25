@@ -28,23 +28,24 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
     private void initData() {
 
-        /*Bill bill = new Bill();
+        Bill bill = new Bill();
         bill.setBillCode("bill1");
         bill.setNit("111122223333");
         bill.setDeleted(false);
         bill.setTotalPay(100);
+        bill.setVersion(0);
         billRepository.save(bill);
-        */
+
 
         List<Bill> billList = billRepository.findAll();
 
-        Bill billItem = billRepository.findById(1L);
+        /*Bill billItem = billRepository.findById(1L);
         billItem.getBillCode();
 
         Boolean isDeleted = billRepository.deleteById(3L);
         if(isDeleted){
             System.out.println("Bill deleted");
-        }
+        }*/
     }
 
 }

@@ -1,8 +1,10 @@
 package edu.umss.storeservice.model;
 
 import edu.umss.storeservice.dto.BillDto;
+import org.hibernate.type.NumericBooleanType;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "bill")
@@ -27,15 +29,20 @@ import javax.persistence.*;
                         @StoredProcedureParameter(mode = ParameterMode.IN, name = "id", type = Long.class)
                 },
                 resultClasses = Bill.class
-        )/*,
+        ),
         @NamedStoredProcedureQuery(
                 name = "SaveBill",
                 procedureName = "SaveBill",
                 parameters = {
-                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "model", type = Bill.class)
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "billCode", type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "createdAt", type = Date.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "isDeleted", type = Integer.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "nit", type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "totalPay", type = Integer.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "version", type = Integer.class),
                 },
                 resultClasses = Bill.class
-        )*/
+        )
 })
 public class Bill extends ModelBase<BillDto>{
 
